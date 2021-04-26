@@ -11,6 +11,7 @@ char *toString(int rows, int cols, char **grid) {
     char *str = (char *) calloc(4 * rows * cols, sizeof(char));
     char *ptr = str;
 
+    // Iterates through rows and columns for empty and occupied spaces.
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
             if (grid[i][j] == '0') {
