@@ -31,10 +31,10 @@ int main(int argc, char** argv) {
 	// Provides instructions on how to operate the program.
     while (true) {
 		// Options are displayed to the user each time the program runs.
-		cout << ("\nPress N to choose number of iterations.\n");
-		cout << ("Press S to save to data to a specified file.\n");
-		cout << ("Press Q to quit the Game of Life program.\n");
-		cout << ("\nPress any other key to move to next generation: ");
+		cout << "\nPress N to choose number of iterations.\n";
+		cout << "Press S to save to data to a specified file.\n";
+		cout << "Press Q to quit the Game of Life program.\n";
+		cout << "\nPress any other key to move to next generation: ";
 		
 		// Creates an array of chars for user inputs.
 		char input[5];
@@ -45,6 +45,7 @@ int main(int argc, char** argv) {
 			// Free memory and exit the game.
             case 'q':
 			case 'Q':
+				cout << "\nExiting the Game of Life program...\n\n";
 				free(grid);
 				return 0;
 			
@@ -52,7 +53,7 @@ int main(int argc, char** argv) {
             case 's':
 			case 'S':
 				// Ask the user to specify the name of the saved file.
-				cout << ("Enter a filename: ");
+				cout << "Enter a filename: ";
 				char filename[254];
 				fgets(filename,254,stdin);
 
@@ -66,7 +67,7 @@ int main(int argc, char** argv) {
             case 'n':
 			case 'N':
 				// Ask the user to specify the number of grid iterations.
-				cout << ("How many iterations: ");
+				cout << "How many iterations: ";
 				char buf[5];
 				fgets(buf,5,stdin);
 
@@ -77,22 +78,23 @@ int main(int argc, char** argv) {
 				num = atoi(buf);
 
 				// Displays the approriate message based on user input.
-				if(num <= 0)
-					cout << "\nYou cannot iterate 0 or less times.\n";
-				else if(num == 1)
+				if(num <= 0) 
+					cout << "\nWARNING: Input must be 1 or more iterations.\n";
+				else if(num == 1) 
 					cout << "\nIterating " << num << " time.\n";
-				else
+				else 
 					cout << "\nIterating " << num << " times.\n";
-
+				
 				// If the input is acceptable, mutate the grid the specified amount of times.
 				for(int i = 0; i < num; ++i) {
 					mutatedGrid = mutateGrid(rows,cols,grid);
 					str = toString(rows,cols,mutatedGrid);
-                    cout << "\n" << str;
-                    free(str);
-                    free(grid);
-                    grid = mutatedGrid;
+					cout << "\n" << str;
+					free(str);
+					free(grid);
+					grid = mutatedGrid;
 				}
+
 				break;
 
 			// Whenever any other key is pressed, mutate the grid one time.

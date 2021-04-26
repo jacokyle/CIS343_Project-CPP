@@ -27,10 +27,10 @@ char *toString(int rows, int cols, char **grid) {
     return str;
 }
 
-// Creates a grid of rows x cols and initializes the grid with data from specified file
+// Creates a grid of rows x cols and initializes the grid with data from specified file.
 char **loadGridFromFile(char *filename, int *rows, int *cols) {
     // Char **grid = NULL;
-    char buf[1024]; // max length of line in input file
+    char buf[1024]; // Max length of line in input file.
     FILE *file = fopen(filename, "r");
 
     // Read line from file.
@@ -61,7 +61,7 @@ char **loadGridFromFile(char *filename, int *rows, int *cols) {
     return gameGrid;
 }
 
-// Saves the grid data to the specified file
+// Saves the grid data to the specified file.
 void saveGridToFile(char *filename, int rows, int cols, char **grid) {
     //"W" flag = writing files
     //"R" Flag = reading, a = append
